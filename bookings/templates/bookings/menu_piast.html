@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restauracja Piast - Menu</title>
+</head>
+<body>
+    <h1>Menu Restauracji Piast</h1>
+    <ul>
+        {% for menu in menus %}
+            <li>
+                <strong>{{ menu.name }}</strong><br>
+                {{ menu.description }}<br>
+                Cena: ${{ menu.price }}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

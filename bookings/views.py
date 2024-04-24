@@ -1,7 +1,8 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.views import generic
+from .models import Menu
 
-
-# Create your views here.
-def my_booking(request):
-    return HttpResponse('Book a Table')
+class MenuView(generic.ListView):
+    template_name = 'menu_piast.html'
+    queryset = Menu.objects.all()
+    context_object_name = 'menu_items'

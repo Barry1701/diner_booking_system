@@ -23,4 +23,20 @@ class Menu(models.Model):
     def __str__(self):
         return self.name
 
+class Table(models.Model):
+    number = models.PositiveIntegerField(unique=True)
+    capacity = models.PositiveIntegerField()
+
+    def __str__(self):
+        return f"Stolik #{self.number} (Pojemność: {self.capacity})"
+
+class Reservation(models.Model):
+    table = models.ForeignKey(Table, on_delete=models.CASCADE)
+    booking = models.ForeignKey(Booking, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"Rezerwacja dla {self.user} przy stoliku #{self.table.number} na {self.booking.date} o godzinie {self.booking.time}"
+
+
 
